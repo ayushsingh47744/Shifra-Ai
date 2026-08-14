@@ -1,0 +1,18 @@
+{
+  "name": "shifra-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "server": "cd Server && npm run dev",
+  "client": "cd Client && npm run dev",
+  "dev": "concurrently \"npm run server\" \"npm run client\""
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^10.0.4"
+  }
+}
