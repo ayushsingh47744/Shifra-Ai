@@ -12,7 +12,7 @@ import ConversationDetail from './pages/ConversationDetail'
 import { Toaster } from "react-hot-toast"
 import ThemeToggle from './Components/ThemeToggle'
 export const ServerUrl = "https://shifra-ai-wcib.onrender.com"
-export const CLIENT_URL = "http://localhost:5173"
+export const CLIENT_URL = "https://shifra-ai-1-xral.onrender.com"
 
 function App() {
   const [user, setUser] = useState(null)
