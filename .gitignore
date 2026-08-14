@@ -17,3 +17,4 @@ Server/dist/
 package-lock.json
 Server/package-lock.json
 Client/package-lock.json
+package.json
