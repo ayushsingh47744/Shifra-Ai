@@ -160,21 +160,6 @@ const STEPS = [
 
 function Home({ user }) {
   const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!user?._id) return
-
-    const script = document.createElement("script")
-   script.src = "https://shifra-ai-1-xral.onrender.com/assistant.js?v=" + Date.now()
-    script.dataset.userId = user._id
-    document.body.appendChild(script)
-
-    return () => {
-      document.body.removeChild(script)
-      document.querySelectorAll(".shifra-popup, .shifra-btn").forEach(el => el.remove())
-    }
-  }, [user?._id])
-
   return (
     <div className='min-h-screen bg-[#f8fafc] dark:bg-gray-950 overflow-hidden'>
 
