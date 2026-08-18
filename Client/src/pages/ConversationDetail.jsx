@@ -25,8 +25,9 @@ function ConversationDetail() {
     if (loading) return <p className="p-6 bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-100 min-h-screen">Loading...</p>
     if (!conversation) return <p className="p-6 bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-100 min-h-screen">Conversation not found.</p>
 
-    return (
-        <div className="p-6 max-w-2xl mx-auto min-h-screen bg-white dark:bg-gray-950">
+  return (
+    <div className="min-h-screen w-full bg-white dark:bg-gray-950">
+        <div className="p-6 max-w-2xl mx-auto">
             <button onClick={() => navigate(-1)} className="text-sm text-blue-600 dark:text-blue-400 mb-4">← Back</button>
 
             <h1 className="text-xl font-bold mb-1 text-[#081028] dark:text-gray-50">Conversation Transcript</h1>
@@ -50,7 +51,8 @@ function ConversationDetail() {
                 ))}
             </div>
         </div>
-    )
+    </div>
+)
 }
 
 export default ConversationDetail
