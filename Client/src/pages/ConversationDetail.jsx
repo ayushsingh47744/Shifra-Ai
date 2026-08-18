@@ -22,22 +22,27 @@ function ConversationDetail() {
         load()
     }, [id])
 
-    if (loading) return <p className="p-6">Loading...</p>
-    if (!conversation) return <p className="p-6">Conversation not found.</p>
+    if (loading) return <p className="p-6 bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-100 min-h-screen">Loading...</p>
+    if (!conversation) return <p className="p-6 bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-100 min-h-screen">Conversation not found.</p>
 
     return (
-        <div className="p-6 max-w-2xl mx-auto">
-            <button onClick={() => navigate(-1)} className="text-sm text-blue-600 mb-4">← Back</button>
+        <div className="p-6 max-w-2xl mx-auto min-h-screen bg-white dark:bg-gray-950">
+            <button onClick={() => navigate(-1)} className="text-sm text-blue-600 dark:text-blue-400 mb-4">← Back</button>
 
-            <h1 className="text-xl font-bold mb-1">Conversation Transcript</h1>
-            <p className="text-sm text-gray-500 mb-6">
+            <h1 className="text-xl font-bold mb-1 text-[#081028] dark:text-gray-50">Conversation Transcript</h1>
+
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
                 Visitor: {conversation.visitorId} • Status: {conversation.status}
             </p>
 
             <div className="space-y-4">
                 {conversation.messages.map((msg, idx) => (
                     <div key={idx} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                        <div className={`max-w-[75%] px-4 py-2 rounded-lg ${msg.role === "user" ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-800"}`}>
+                        <div className={`max-w-[75%] px-4 py-2 rounded-lg ${
+                            msg.role === "user"
+                                ? "bg-blue-500 text-white"
+                                : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100"
+                        }`}>
                             <p className="text-xs opacity-70 mb-1">{msg.role === "user" ? "User" : "AI"}</p>
                             <p>{msg.text}</p>
                         </div>
