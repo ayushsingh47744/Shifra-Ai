@@ -263,7 +263,7 @@ export const askAssistant = async (req, res) => {
 
             const wantsNavigation =
                 navigationWords.some((word) =>
-                    cleanMessage.startsWith(word)
+                    cleanMessage.includes(word)
                 );
 
             if (wantsNavigation) {
