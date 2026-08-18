@@ -74,7 +74,8 @@ function Home({ user }) {
 
           <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6'>
             {STEPS.map((s,i)=>(
-              <div key={i} className='group bg-[#f8fafc] dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-[28px] p-7 transition-all hover:shadow-[0_15px_50px_rgba(0,0,0,0.06)]'>
+              <div key={i} className='group bg-[#f8fafc] dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-[28px] p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_50px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_15px_50px_rgba(168,85,247,0.15)]'>
+                
                 <span className='text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-emerald-500'>{s.step}</span>
                 <h3 className='mt-5 text-lg font-semibold text-[#081028] dark:text-gray-50'>{s.title}</h3>
                 <p className='mt-3 text-sm text-gray-500 dark:text-gray-400 leading-relaxed'>{s.desc}</p>
