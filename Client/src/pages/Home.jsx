@@ -165,7 +165,7 @@ function Home({ user }) {
     if (!user?._id) return
 
     const script = document.createElement("script")
-    script.src = "https://shifra-ai-1-xral.onrender.com/assistant.js"
+   script.src = "https://shifra-ai-1-xral.onrender.com/assistant.js?v=" + Date.now()
     script.dataset.userId = user._id
     document.body.appendChild(script)
 
