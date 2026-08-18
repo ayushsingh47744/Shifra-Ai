@@ -120,18 +120,18 @@ function App() {
   //     document.querySelectorAll(".shifra-popup, .shifra-btn").forEach(el => el.remove())
   //   }
   // }, [user?._id])
-const DEFAULT_ASSISTANT_ID = "PASTE_YOUR_DEFAULT_DEMO_USER_ID_HERE"
+const DEMO_ASSISTANT_ID = "6a84695b942f2f9475b68b79"
 
 useEffect(() => {
   const script = document.createElement("script")
   script.src = "https://shifra-ai-1-xral.onrender.com/assistant.js?v=" + Date.now()
-  script.dataset.userId = DEFAULT_ASSISTANT_ID   // hamesha fixed default
+  script.dataset.userId = DEMO_ASSISTANT_ID
   document.body.appendChild(script)
   return () => {
     document.body.removeChild(script)
     document.querySelectorAll(".shifra-popup, .shifra-btn").forEach(el => el.remove())
   }
-}, [])   // dependency bhi hata di — ab login/logout se widget change nahi hoga
+}, [])
   return (
     <>
       <Toaster position='top-right'/>
