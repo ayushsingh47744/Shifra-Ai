@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import logo from "../assets/logo.png"
 import { FiLogOut, FiMenu, FiX } from "react-icons/fi";
 import axios from 'axios';
 import { ServerUrl } from '../App';
 import toast from 'react-hot-toast';
+
 function Navbar({user , setUser}) {
   const navigate = useNavigate()
+  const location = useLocation()
   const [menuOpen,setMenuOpen] = useState(false)
 
   const handleLogout = async () => {
@@ -20,6 +22,21 @@ function Navbar({user , setUser}) {
       console.log(error)
     }
   }
+
+  const navBtnClass = (path) =>
+    `px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
+      location.pathname === path
+        ? "bg-gradient-to-r from-purple-500 to-emerald-500 text-white shadow-md hover:scale-[1.02]"
+        : "border border-orange-100 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:border-purple-300"
+    }`
+
+  const mobileNavBtnClass = (path) =>
+    `w-full py-2.5 rounded-xl text-sm font-medium ${
+      location.pathname === path
+        ? "bg-gradient-to-r from-purple-500 to-emerald-500 text-white"
+        : "border border-orange-100 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200"
+    }`
+
   return (
     <div className='sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-[#0f1729]/95 border-b border-orange-100 dark:border-purple-500/10'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between'>
@@ -34,11 +51,11 @@ function Navbar({user , setUser}) {
 
         {user && (<div className='hidden md:flex items-center gap-3'>
 
-          <button onClick={()=>navigate("/builder")} className='px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-emerald-500 text-white text-sm font-medium shadow-md hover:scale-[1.02] transition-all cursor-pointer'>Builder</button>
+          <button onClick={()=>navigate("/builder")} className={navBtnClass("/builder")}>Builder</button>
 
-          <button onClick={()=>navigate("/billing")} className='px-4 py-2 rounded-xl border border-orange-100 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm font-medium hover:border-purple-300 transition-all cursor-pointer'>Billing</button>
+          <button onClick={()=>navigate("/billing")} className={navBtnClass("/billing")}>Billing</button>
 
-          <button onClick={()=>navigate("/history")} className='px-4 py-2 rounded-xl border border-orange-100 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm font-medium hover:border-purple-300 transition-all cursor-pointer'>History</button>
+          <button onClick={()=>navigate("/history")} className={navBtnClass("/history")}>History</button>
 
           <div className='flex items-center gap-3 px-4 py-2 rounded-2xl bg-white dark:bg-gray-800 border border-orange-100 dark:border-gray-700 shadow-sm'>
 
@@ -95,9 +112,9 @@ function Navbar({user , setUser}) {
             </div>
 
             <div className='flex flex-col gap-3 mt-4'>
-              <button className='w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-emerald-500 text-white text-sm font-medium' onClick={()=>{navigate("/builder");setMenuOpen(false)}}>Bulider</button>
-              <button className='w-full py-2.5 rounded-xl border border-orange-100 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm font-medium' onClick={()=>{navigate("/billing");setMenuOpen(false)}}>Billing</button>
-              <button className='w-full py-2.5 rounded-xl border border-orange-100 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm font-medium' onClick={()=>{navigate("/history");setMenuOpen(false)}}>History</button>
+              <button className={mobileNavBtnClass("/builder")} onClick={()=>{navigate("/builder");setMenuOpen(false)}}>Builder</button>
+              <button className={mobileNavBtnClass("/billing")} onClick={()=>{navigate("/billing");setMenuOpen(false)}}>Billing</button>
+              <button className={mobileNavBtnClass("/history")} onClick={()=>{navigate("/history");setMenuOpen(false)}}>History</button>
             </div>
 
             <button onClick={()=>{setMenuOpen(false);handleLogout()}} className='mt-4 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-red-50 dark:bg-red-950 text-red-500 hover:bg-red-100 dark:hover:bg-red-900 transition-colors text-sm font-medium'><FiLogOut size={16}/> LogOut</button>
