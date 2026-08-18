@@ -69,7 +69,6 @@
 // export default App
 
 
-
 import React, { useEffect, useState } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
@@ -92,7 +91,6 @@ function App() {
   const location = useLocation()
 
   useEffect(() => {
-
     const fetchMe = async () => {
       try {
         const res = await axios.get(ServerUrl + "/api/user/current-user", { withCredentials: true })
@@ -108,19 +106,29 @@ function App() {
     } else {
       setLoading(false)
     }
-
   }, [location.pathname])
 
+  // Inject assistant widget script globally on all protected routes
+  useEffect(() => {
+    if (!user?._id) return
+
+    const script = document.createElement("script")
+    script.src = "https://shifra-ai-1-xral.onrender.com/assistant.js?v=" + Date.now()
+    script.dataset.userId = user._id
+    document.body.appendChild(script)
+
+    return () => {
+      document.body.removeChild(script)
+      document.querySelectorAll(".shifra-popup, .shifra-btn").forEach(el => el.remove())
+    }
+  }, [user?._id])
 
   return (
     <>
-
-    <Toaster position='top-right'/>
-    <ThemeToggle />
+      <Toaster position='top-right'/>
+      <ThemeToggle />
       <Routes>
-
         <Route path='/login' element={<Login setUser={setUser}/>} />
-
         <Route path='/*' element={<ProtectedRoute user={user} loading={loading}>
           <Navbar setUser={setUser} user={user}/>
           <Routes>
@@ -129,17 +137,15 @@ function App() {
             <Route path='/billing' element={<Billing user={user} setUser={setUser}/>}/>
             <Route path='/history' element={<History user={user}/>}/>
             <Route path='/history/:id' element={<ConversationDetail user={user}/>}/>
-
             <Route path='*' element={<Navigate to="/" replace/>}/>
           </Routes>
-
-
         </ProtectedRoute>} />
-
       </Routes>
-
     </>
   )
+}
+
+export default App
 }
 
 export default App
