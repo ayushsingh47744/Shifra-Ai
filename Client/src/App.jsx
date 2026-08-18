@@ -68,7 +68,6 @@
 
 // export default App
 
-
 import React, { useEffect, useState } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
@@ -108,7 +107,6 @@ function App() {
     }
   }, [location.pathname])
 
-  // Inject assistant widget script globally on all protected routes
   useEffect(() => {
     if (!user?._id) return
 
@@ -145,6 +143,7 @@ function App() {
   )
 }
 
+export default App
 export default App
 }
 
