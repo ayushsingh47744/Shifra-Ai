@@ -107,20 +107,31 @@ function App() {
     }
   }, [location.pathname])
 
-  useEffect(() => {
-    if (!user?._id) return
+  // useEffect(() => {
+  //   if (!user?._id) return
 
-    const script = document.createElement("script")
-    script.src = "https://shifra-ai-1-xral.onrender.com/assistant.js?v=" + Date.now()
-    script.dataset.userId = user._id
-    document.body.appendChild(script)
+  //   const script = document.createElement("script")
+  //   script.src = "https://shifra-ai-1-xral.onrender.com/assistant.js?v=" + Date.now()
+  //   script.dataset.userId = user._id
+  //   document.body.appendChild(script)
 
-    return () => {
-      document.body.removeChild(script)
-      document.querySelectorAll(".shifra-popup, .shifra-btn").forEach(el => el.remove())
-    }
-  }, [user?._id])
+  //   return () => {
+  //     document.body.removeChild(script)
+  //     document.querySelectorAll(".shifra-popup, .shifra-btn").forEach(el => el.remove())
+  //   }
+  // }, [user?._id])
+const DEFAULT_ASSISTANT_ID = "PASTE_YOUR_DEFAULT_DEMO_USER_ID_HERE"
 
+useEffect(() => {
+  const script = document.createElement("script")
+  script.src = "https://shifra-ai-1-xral.onrender.com/assistant.js?v=" + Date.now()
+  script.dataset.userId = DEFAULT_ASSISTANT_ID   // hamesha fixed default
+  document.body.appendChild(script)
+  return () => {
+    document.body.removeChild(script)
+    document.querySelectorAll(".shifra-popup, .shifra-btn").forEach(el => el.remove())
+  }
+}, [])   // dependency bhi hata di — ab login/logout se widget change nahi hoga
   return (
     <>
       <Toaster position='top-right'/>
