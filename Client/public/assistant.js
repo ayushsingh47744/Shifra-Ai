@@ -127,13 +127,26 @@
 
     let open = false
 
-    button.onclick = () => {
+    // button.onclick = () => {
+    //     open = !open;
+    //     popup.style.display = open ? "flex" : "none";
+
+    //     // popup band hone par conversation end mark karo
+    //     if (!open) {
+    //         fetch("http://localhost:8000/api/conversation-end", {
+    //             method: "POST",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify({ userId, visitorId })
+    //         }).catch((err) => console.log("End conversation error:", err));
+    //     }
+    // }
+        button.onclick = () => {
         open = !open;
         popup.style.display = open ? "flex" : "none";
 
         // popup band hone par conversation end mark karo
         if (!open) {
-            fetch("http://localhost:8000/api/conversation-end", {
+            fetch("https://shifra-ai-wcib.onrender.com/api/conversation-end", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ userId, visitorId })
@@ -190,10 +203,17 @@
 
     loadAssistant()
 
-    // Conversation end tracking — tab/window band hone par ya user chale jaane par
+    // // Conversation end tracking — tab/window band hone par ya user chale jaane par
+    // window.addEventListener("beforeunload", () => {
+    //     navigator.sendBeacon(
+    //         "http://localhost:8000/api/conversation-end",
+    //         new Blob([JSON.stringify({ userId, visitorId })], { type: "application/json" })
+    //     );
+    // });
+        // Conversation end tracking — tab/window band hone par ya user chale jaane par
     window.addEventListener("beforeunload", () => {
         navigator.sendBeacon(
-            "http://localhost:8000/api/conversation-end",
+            "https://shifra-ai-wcib.onrender.com/api/conversation-end",
             new Blob([JSON.stringify({ userId, visitorId })], { type: "application/json" })
         );
     });
