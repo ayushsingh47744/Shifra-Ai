@@ -68,9 +68,8 @@ function History() {
                     {conversations.map((conv) => (
                         <div
                             key={conv._id}
-                            // onClick={() => navigate(`/dashboard/history/${conv._id}`)}
                             onClick={() => navigate(`/history/${conv._id}`)}
-                            className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-750"
+                            className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded p-4 cursor-pointer transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-md dark:hover:shadow-purple-500/10 hover:-translate-y-0.5"
                         >
                             <div className="flex justify-between">
                                 <span className="font-medium text-gray-800 dark:text-gray-100">Visitor: {conv.visitorId.slice(0, 8)}</span>
