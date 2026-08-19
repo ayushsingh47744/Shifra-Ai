@@ -3,7 +3,7 @@
 
 // const messageSchema = new mongoose.Schema(
 //   {
-//     role: { type: String, enum: ["user", "assistant"], required: true },
+//     role: { type: String, enum: ["user", "agent"], required: true },
 //     text: { type: String, required: true },
 //   },
 //   { timestamps: true, _id: false }
@@ -24,7 +24,7 @@ import mongoose from "mongoose";
 
 const messageSchema = new mongoose.Schema(
   {
-    role: { type: String, enum: ["user", "assistant"], required: true },
+    role: { type: String, enum: ["user", "agent"], required: true },
     text: { type: String, required: true },
   },
   { timestamps: true, _id: false }

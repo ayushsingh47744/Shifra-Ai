@@ -20,7 +20,7 @@
 
     const theme = "dark"
 
-    let assistantConfig = null
+    let agentConfig = null
 
     let userLanguage = "en-US"   // default, config load hone pe update hoga
 
@@ -31,7 +31,7 @@
 
     link.rel = "stylesheet"
 
-    link.href = "https://shifra-ai-1-xral.onrender.com/assistant.css"
+    link.href = "https://shifra-ai-1-xral.onrender.com/agent.css"
 
     document.head.appendChild(link)
 
@@ -61,7 +61,7 @@
             </h2>
 
             <p class="shifra-sub">
-                Your smart voice assistant.
+                Your smart voice agent.
                 <br />
                 Ask anything about your website.
             </p>
@@ -155,22 +155,22 @@
     }
 
 
-    // load Assistant
+    // load Agent
 
-    const loadAssistant = async () => {
+    const loadAgent = async () => {
         try {
-            const res = await fetch(`https://shifra-ai-wcib.onrender.com/api/assistant/config/${userId}`)
+            const res = await fetch(`https://shifra-ai-wcib.onrender.com/api/agent/config/${userId}`)
 
             const data = await res.json()
 
             if (data) {
-                assistantConfig = data.user
+                agentConfig = data.user
                 applyConfig()
             }
 
         } catch (error) {
             console.log(
-                "Assistant Load Error:",
+                "Agent Load Error:",
                 error
             );
         }
@@ -178,30 +178,30 @@
 
 
     const applyConfig = () => {
-        if (!assistantConfig) return;
+        if (!agentConfig) return;
 
-        popup.className = `shifra-popup theme-${assistantConfig.theme}`
+        popup.className = `shifra-popup theme-${agentConfig.theme}`
 
-        button.className = `shifra-btn theme-${assistantConfig.theme}`
+        button.className = `shifra-btn theme-${agentConfig.theme}`
 
         const title = popup.querySelector(".shifra-title")
 
-        title.innerHTML = `Hello! I'm ${assistantConfig.assistantName}`;
+        title.innerHTML = `Hello! I'm ${agentConfig.agentName}`;
 
         const subTitle = popup.querySelector(".shifra-sub")
         subTitle.innerHTML = `
     Welcome to
-    ${assistantConfig.businessName}.
+    ${agentConfig.businessName}.
     <br />
     Ask anything about your website.
   `;
 
         // language config se le
-        userLanguage = assistantConfig.language || "en-US";
+        userLanguage = agentConfig.language || "en-US";
 
     }
 
-    loadAssistant()
+    loadAgent()
 
     // // Conversation end tracking — tab/window band hone par ya user chale jaane par
     // window.addEventListener("beforeunload", () => {
@@ -340,7 +340,7 @@
                 status.innerText = "Thinking...";
                 
 
-                const res = await fetch("https://shifra-ai-wcib.onrender.com/api/assistant/ask" , {
+                const res = await fetch("https://shifra-ai-wcib.onrender.com/api/agent/ask" , {
                     method:"POST",
                     headers:{
                         "Content-Type":

@@ -15,10 +15,10 @@ export const getCurrentUser = async (req,res) => {
 }
 
 
-export const saveAssistant = async (req,res) => {
+export const saveAgent = async (req,res) => {
     try {
         const {
-        assistantName,
+        agentName,
         businessName,
         businessType,
         businessDescription,
@@ -32,7 +32,7 @@ export const saveAssistant = async (req,res) => {
         if(!user){
             return res.status(404).json({message:"Failed to get current user"})
         }
-        user.assistantName = assistantName;
+        user.agentName = agentName;
         user.businessName = businessName;
         user.businessType = businessType;
         user.businessDescription = businessDescription;
@@ -49,10 +49,10 @@ export const saveAssistant = async (req,res) => {
         await user.save()
 
         return res.status(200).json({ message:
-          "Assistant saved successfully",
+          "Agent saved successfully",
         user})
     } catch (error) {
-        return res.status(500).json({message:`failed to save Assistant ${error}`})
+        return res.status(500).json({message:`failed to save Agent ${error}`})
     }
 }
 

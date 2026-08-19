@@ -2,7 +2,7 @@
 // import User from "../Models/user.model.js"
 
 
-// export const getAssistantConfig = async (req, res) => {
+// export const getAgentConfig = async (req, res) => {
 //     try {
 //         const { userId } = req.params
 
@@ -11,15 +11,15 @@
 //             return res.status(404).json({ message: "failed to get user" })
 //         }
 
-//         return res.status(200).json({ message: "Assistant Config data ", user })
+//         return res.status(200).json({ message: "Agent Config data ", user })
 
 //     } catch (error) {
-//         return res.status(500).json({ message: `Assistant Config failed ${error}` })
+//         return res.status(500).json({ message: `Agent Config failed ${error}` })
 //     }
 // }
 
 
-// export const askAssistant = async (req, res) => {
+// export const askAgent = async (req, res) => {
 //     try {
 //         const { message, userId, history } = req.body
 
@@ -135,13 +135,13 @@
 //         const historyText =
 //             Array.isArray(history) && history.length > 0
 //                 ? history
-//                       .map((h) => `${h.role === "user" ? "User" : "Assistant"}: ${h.text}`)
+//                       .map((h) => `${h.role === "user" ? "User" : "Agent"}: ${h.text}`)
 //                       .join("\n")
 //                 : "No previous conversation.";
 
 //         const prompt = `
 
-// You are ${user.assistantName}.
+// You are ${user.agentName}.
 
 // Business Name:
 // ${user.businessName}
@@ -152,7 +152,7 @@
 // Business Description:
 // ${user.businessDescription}
 
-// Assistant Tone:
+// Agent Tone:
 // ${user.tone}
 
 // Previous Conversation:
@@ -166,7 +166,7 @@
 // - Give fast direct responses
 // - Talk naturally
 // - Use previous conversation for context if relevant
-// - Behave like smart voice assistant
+// - Behave like smart voice agent
 // - Avoid long explanations
 // - Keep responses short for quick voice playback
 
@@ -195,7 +195,7 @@
 //         return  res.status(500).json({
 //                 success: false,
 //                 message:
-//                     "Assistant AI Error",
+//                     "Agent AI Error",
 //             });
 
 //     }
@@ -206,7 +206,7 @@ import User from "../Models/user.model.js"
 import Conversation from "../Models/conversation.model.js"
 
 
-export const getAssistantConfig = async (req, res) => {
+export const getAgentConfig = async (req, res) => {
     try {
         const { userId } = req.params
 
@@ -215,15 +215,15 @@ export const getAssistantConfig = async (req, res) => {
             return res.status(404).json({ message: "failed to get user" })
         }
 
-        return res.status(200).json({ message: "Assistant Config data ", user })
+        return res.status(200).json({ message: "Agent Config data ", user })
 
     } catch (error) {
-        return res.status(500).json({ message: `Assistant Config failed ${error}` })
+        return res.status(500).json({ message: `Agent Config failed ${error}` })
     }
 }
 
 
-export const askAssistant = async (req, res) => {
+export const askAgent = async (req, res) => {
     try {
         const { message, userId, history, visitorId } = req.body
 
@@ -304,13 +304,13 @@ export const askAssistant = async (req, res) => {
         const historyText =
             Array.isArray(history) && history.length > 0
                 ? history
-                      .map((h) => `${h.role === "user" ? "User" : "Assistant"}: ${h.text}`)
+                      .map((h) => `${h.role === "user" ? "User" : "Agent"}: ${h.text}`)
                       .join("\n")
                 : "No previous conversation.";
 
         const prompt = `
 
-You are ${user.assistantName}.
+You are ${user.agentName}.
 
 Business Name:
 ${user.businessName}
@@ -321,7 +321,7 @@ ${user.businessType}
 Business Description:
 ${user.businessDescription}
 
-Assistant Tone:
+Agent Tone:
 ${user.tone}
 
 Previous Conversation:
@@ -335,7 +335,7 @@ Rules:
 - Give fast direct responses
 - Talk naturally
 - Use previous conversation for context if relevant
-- Behave like smart voice assistant
+- Behave like smart voice agent
 - Avoid long explanations
 - Keep responses short for quick voice playback
 
@@ -361,7 +361,7 @@ ${message}
                 }
 
                 conversation.messages.push({ role: "user", text: message })
-                conversation.messages.push({ role: "assistant", text: aiResponse })
+                conversation.messages.push({ role: "agent", text: aiResponse })
 
                 await conversation.save()
             } catch (saveError) {
@@ -380,7 +380,7 @@ ${message}
 
         return res.status(500).json({
             success: false,
-            message: "Assistant AI Error",
+            message: "Agent AI Error",
         });
 
     }

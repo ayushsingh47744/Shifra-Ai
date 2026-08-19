@@ -129,7 +129,7 @@ const themes = {
   },
 }
 
-function AssistantPreview() {
+function AgentPreview() {
 
     const [theme,setTheme]= useState("dark")
     const current = themes[theme]
@@ -192,7 +192,7 @@ function AssistantPreview() {
             </h2>
 
             <p className={`mt-4 text-[13px] sm:text-[15px] md:text-[16px] leading-6 sm:leading-7 max-w-[280px] mx-auto ${current.sub}`}>
-                Your smart voice assistant.
+                Your smart voice agent.
               <br />
               Ask anything about your website.
             </p>
@@ -236,4 +236,4 @@ function AssistantPreview() {
   )
 }
 
-export default AssistantPreview
+export default AgentPreview

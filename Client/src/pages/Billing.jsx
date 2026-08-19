@@ -11,7 +11,7 @@ function Billing({ user ,setUser}) {
   useEffect(()=>{
     if(user && !user.isSetupComplete){
       toast.error(
-        "Setup your assistant first"
+        "Setup your agent first"
       );
 
 
@@ -105,7 +105,7 @@ function Billing({ user ,setUser}) {
           <h2 className='text-3xl font-bold text-[#081028] dark:text-gray-50'>
             Billing & Subscription
           </h2>
-          <p className='text-gray-500 dark:text-gray-400 mt-1'>  Manage your AI assistant plan and usage.</p>
+          <p className='text-gray-500 dark:text-gray-400 mt-1'>  Manage your AI agent plan and usage.</p>
         </div>
 
         <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6'>
@@ -157,7 +157,7 @@ function Billing({ user ,setUser}) {
             <ul className="mt-6 space-y-4 text-gray-600 dark:text-gray-400">
 
               <li>200 AI messages</li>
-              <li>Voice assistant</li>
+              <li>Voice agent</li>
               <li>Navigation support</li>
               <li>Basic customization</li>
 
@@ -181,7 +181,7 @@ function Billing({ user ,setUser}) {
             <ul className='mt-6 space-y-4 opacity-90'>
 
               <li>Unlimited AI messages</li>
-              <li>Advanced AI assistant</li>
+              <li>Advanced AI agent</li>
               <li>Priority performance</li>
               <li>Unlimited navigation</li>
               <li>Premium support</li>

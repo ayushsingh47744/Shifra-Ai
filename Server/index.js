@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser"
 dotenv.config()
 import cors from "cors"
 import userRouter from "./Routes/user.route.js"
-import assistantRouter from "./Routes/assistant.route.js"
+import agentRouter from "./Routes/agent.route.js"
 import billingRouter from "./Routes/billing.route.js"
 import { conversationRouter, publicConversationRouter } from "./Routes/conversation.route.js"
 import dns from 'dns';
@@ -45,7 +45,7 @@ app.use("/api/user",privateCors , userRouter)
 app.use("/api/billing",privateCors , billingRouter)
 app.use("/api/conversation", privateCors, conversationRouter)
 app.use("/api/conversation-end", publicCors, publicConversationRouter)
-app.use("/api/assistant",publicCors , assistantRouter)
+app.use("/api/agent",publicCors , agentRouter)
 const PORT = process.env.PORT
 app.listen(PORT , ()=>{
     console.log(`Server Started on Port ${PORT}`)

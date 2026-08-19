@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import logo from "../assets/logo.png"
 
 const STEPS = [
-  { step: "01", title: "Sign up free", desc: "Continue with Google and create your assistant instantly." },
-  { step: "02", title: "Customize assistant", desc: "Set your business name, tone, voice and theme." },
-  { step: "03", title: "Train your assistant", desc: "Add business details and personalize responses." },
+  { step: "01", title: "Sign up free", desc: "Continue with Google and create your agent instantly." },
+  { step: "02", title: "Customize agent", desc: "Set your business name, tone, voice and theme." },
+  { step: "03", title: "Train your agent", desc: "Add business details and personalize responses." },
   { step: "04", title: "Embed anywhere", desc: "Copy one script tag and add it to your website." },
 ];
 
@@ -34,7 +34,7 @@ function Home({ user }) {
               Add a{" "}
               <span className="inline-block px-2">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-emerald-500">
-                  Virtual Assistant
+                  Virtual Agent
                 </span>
               </span>
               <br className="hidden sm:block" />
@@ -42,13 +42,13 @@ function Home({ user }) {
             </h1>
 
             <p className='max-w-2xl mx-auto mt-7 text-sm sm:text-lg lg:text-xl text-[#64748b] dark:text-gray-400 leading-relaxed px-2'>
-              Create a smart voice-enabled assistant that talks to visitors,
+              Create a smart voice-enabled agent that talks to visitors,
               answers questions and helps users navigate your website instantly.
             </p>
 
             <div className='flex flex-col sm:flex-row items-center justify-center gap-4 mt-10'>
               <button onClick={()=>navigate("/builder")} className='w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-emerald-500 text-white font-semibold text-sm sm:text-base shadow-[0_12px_40px_rgba(168,85,247,0.25)] hover:scale-[1.02] transition-all cursor-pointer'>
-                Build Your Assistant
+                Build Your Agent
               </button>
             </div>
 
@@ -92,7 +92,7 @@ function Home({ user }) {
               <img src={logo} alt="logo" className='h-9 w-auto object-contain' />
               <h1 className='font-bold text-xl text-gray-100 leading-none'>Shifra{" "}<span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-emerald-500'>AI</span></h1>
             </div>
-            <p className="text-gray-400 text-sm mt-1">Voice AI assistant for websites</p>
+            <p className="text-gray-400 text-sm mt-1">Voice AI agent for websites</p>
           </div>
           <p className='text-gray-500 text-sm'>
             © {new Date().getFullYear()} ShifraAI. All rights reserved.

@@ -24,9 +24,9 @@ const LANGUAGES = [
 
 function Builder({user , setUser}) {
 
-  const [editAssistant , setEditAssistant] = useState(!user?.isSetupComplete)
+  const [editAgent , setEditAgent] = useState(!user?.isSetupComplete)
 
-  const [assistantName , setAssistantName] = useState(user?.assistantName || "");
+  const [agentName , setAgentName] = useState(user?.agentName || "");
 
   const [businessName , setBusinessName] = useState(user?.businessName || "")
   
@@ -76,11 +76,11 @@ function Builder({user , setUser}) {
   }
 
 
-  const saveAssistant = async () => {
+  const saveAgent = async () => {
     setLoading(true)
     try {
       const data={
-        assistantName,
+        agentName,
         businessName,
         businessType,
         businessDescription,
@@ -91,14 +91,14 @@ function Builder({user , setUser}) {
         pages,
       }
 
-      const res = await axios.post(ServerUrl + "/api/user/save-assistant" , data , {withCredentials:true})
+      const res = await axios.post(ServerUrl + "/api/user/save-agent" , data , {withCredentials:true})
       console.log(res.data)
       setUser(res.data.user)
-      setEditAssistant(false)
-      toast.success("Assistant Saved Successfully")
+      setEditAgent(false)
+      toast.success("Agent Saved Successfully")
       setLoading(false)
     } catch (error) {
-      toast.error("Failed to save assistant")
+      toast.error("Failed to save agent")
       console.log(error)
       setLoading(false)
     }
@@ -129,32 +129,32 @@ function Builder({user , setUser}) {
 
 
 
-     const embedCode = `<script src="${CLIENT_URL}/assistant.js" data-user-id="${user?._id}"></script>`;
+     const embedCode = `<script src="${CLIENT_URL}/agent.js" data-user-id="${user?._id}"></script>`;
 
   return (
     <div className='min-h-screen bg-[#f7f8fc] dark:bg-[#0b1020] px-4 py-8'>
       <div className='max-w-4xl mx-auto'>
         <div className='mb-8'>
           <h2 className='text-3xl font-bold text-[#081028] dark:text-white'>
-            Assistant Builder
+            Agent Builder
           </h2>
           <p className='text-gray-500 dark:text-gray-400 mt-1'> Customize your virtual
-            assistant</p>
+            agent</p>
         </div>
 
-        {user.isSetupComplete && !editAssistant &&(
+        {user.isSetupComplete && !editAgent &&(
           <div className='bg-white dark:bg-[#131a2e] rounded-3xl border border-gray-100 dark:border-white/10 shadow-sm p-6 mb-6'>
 
            <p className="text-sm text-gray-400 dark:text-gray-500">
-                Assistant
+                Agent
               </p>
 
               <h2 className="text-3xl font-bold text-[#081028] dark:text-white mt-1">
-                {user.assistantName}
+                {user.agentName}
               </h2>
 
               <p className="text-gray-500 dark:text-gray-400 mt-3 leading-7">
-                Your assistant is ready
+                Your agent is ready
                 to use on your website.
               </p>
 
@@ -214,7 +214,7 @@ function Builder({user , setUser}) {
 
   Your Website Content
 
-  <script src="${CLIENT_URL}/assistant.js" data-user-id="${user?._id}"></script>
+  <script src="${CLIENT_URL}/agent.js" data-user-id="${user?._id}"></script>
 
 </body>`}
                   </pre>
@@ -232,7 +232,7 @@ function Builder({user , setUser}) {
               </div>
 
 
-              <button onClick={()=>setEditAssistant(true)} className='mt-6 h-12 px-6 rounded-2xl bg-gradient-to-r from-purple-500 to-emerald-500 text-white font-medium'>Edit Assistant</button>
+              <button onClick={()=>setEditAgent(true)} className='mt-6 h-12 px-6 rounded-2xl bg-gradient-to-r from-purple-500 to-emerald-500 text-white font-medium'>Edit Agent</button>
 
 
           </div>
@@ -240,16 +240,16 @@ function Builder({user , setUser}) {
           
         )}
 
-        {editAssistant && <div className='space-y-6'>
+        {editAgent && <div className='space-y-6'>
 
           <div className='bg-white dark:bg-[#131a2e] rounded-3xl border border-gray-100 dark:border-white/10 shadow-sm p-6'>
             <h2 className='text-lg font-semibold mb-5 dark:text-white'>Basic Information</h2>
 
             <div className='space-y-4'>
               <input type="text" 
-              onChange={(e)=>setAssistantName(e.target.value)}
-              value={assistantName}
-              placeholder="Assistant Name"
+              onChange={(e)=>setAgentName(e.target.value)}
+              value={agentName}
+              placeholder="Agent Name"
               className="w-full border border-gray-200 dark:border-white/10 dark:bg-[#0e1424] dark:text-white rounded-2xl px-4 py-3" />
 
               <input type="text" 
@@ -298,7 +298,7 @@ function Builder({user , setUser}) {
 
 
             <div className='mt-6'>
-              <label  className='text-sm text-gray-600 dark:text-gray-400 mb-3 block'>Assistant Tone</label>
+              <label  className='text-sm text-gray-600 dark:text-gray-400 mb-3 block'>Agent Tone</label>
 
               <div className='grid grid-cols-2 sm:grid-cols-3 gap-3'>
                 {TONES.map((item)=>(
@@ -314,7 +314,7 @@ function Builder({user , setUser}) {
             </div>
 
             <div className='mt-6'>
-              <label  className='text-sm text-gray-600 dark:text-gray-400 mb-3 block'>Assistant Language</label>
+              <label  className='text-sm text-gray-600 dark:text-gray-400 mb-3 block'>Agent Language</label>
 
               <div className='grid grid-cols-2 sm:grid-cols-3 gap-3'>
                 {LANGUAGES.map((item)=>(
@@ -339,7 +339,7 @@ function Builder({user , setUser}) {
                   Gemini API KEY
                 </h2>
                 <p className='text-sm text-gray-400 dark:text-gray-500 mt-1'>
-                  Add your Gemini API key to power your assistant
+                  Add your Gemini API key to power your agent
                 </p>
               </div>
 
@@ -367,7 +367,7 @@ function Builder({user , setUser}) {
               <div>
                 <h2 className='text-lg font-semibold dark:text-white'>Navigation Pages</h2>
                 <p className='text-sm text-gray-400 dark:text-gray-500'>
-                  Assistant can redirect users
+                  Agent can redirect users
                 </p>
               </div>
 
@@ -411,15 +411,15 @@ function Builder({user , setUser}) {
             </div>
           </div>
 
-          <button onClick={saveAssistant} 
+          <button onClick={saveAgent} 
           disabled={loading || 
-             !assistantName ||
+             !agentName ||
         !businessName  ||
         !businessType ||
         !businessDescription ||
         !geminiApiKey} className='w-full h-14 rounded-2xl bg-gradient-to-r from-purple-500 to-emerald-500 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed'>
             {
-              loading ? "Saving..." : user.isSetupComplete ? "Update Assistant" : "Save Assistant"
+              loading ? "Saving..." : user.isSetupComplete ? "Update Agent" : "Save Agent"
             }
           </button>
 

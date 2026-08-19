@@ -42,7 +42,7 @@ function Login({setUser}) {
                 "Easy Embed",
 
             desc:
-                "Add assistant using one script tag.",
+                "Add agent using one script tag.",
         },
 
         {
@@ -82,16 +82,16 @@ function Login({setUser}) {
                         <div className='inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-200 dark:border-purple-800 bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 text-sm font-medium'>
                             <HiOutlineSparkles />
 
-                            AI Voice Assistant Platform
+                            AI Voice Agent Platform
                         </div>
 
                         <h1 className='mt-8 text-5xl lg:text-7xl font-black leading-tight text-[#081028] dark:text-gray-50'>
-                            Build AI Assistants
+                            Build AI Agents
                             <span className='block text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-emerald-500'>For Any Website</span>
                         </h1>
 
                         <p className='mt-8 text-lg text-[#475569] dark:text-gray-400 leading-8 max-w-2xl'>
-                            Create customizable AI voice assistants that talk,
+                            Create customizable AI voice agents that talk,
                             guide users, and integrate into any website instantly.
                         </p>
 

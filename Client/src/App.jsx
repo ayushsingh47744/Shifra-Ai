@@ -111,7 +111,7 @@ function App() {
   //   if (!user?._id) return
 
   //   const script = document.createElement("script")
-  //   script.src = "https://shifra-ai-1-xral.onrender.com/assistant.js?v=" + Date.now()
+  //   script.src = "https://shifra-ai-1-xral.onrender.com/agent.js?v=" + Date.now()
   //   script.dataset.userId = user._id
   //   document.body.appendChild(script)
 
@@ -120,12 +120,12 @@ function App() {
   //     document.querySelectorAll(".shifra-popup, .shifra-btn").forEach(el => el.remove())
   //   }
   // }, [user?._id])
-const DEMO_ASSISTANT_ID = "6a84695b942f2f9475b68b79"
+const DEMO_AGENT_ID = "6a84695b942f2f9475b68b79"
 
 useEffect(() => {
   const script = document.createElement("script")
-  script.src = "https://shifra-ai-1-xral.onrender.com/assistant.js?v=" + Date.now()
-  script.dataset.userId = DEMO_ASSISTANT_ID
+  script.src = "https://shifra-ai-1-xral.onrender.com/agent.js?v=" + Date.now()
+  script.dataset.userId = DEMO_AGENT_ID
   document.body.appendChild(script)
   return () => {
     document.body.removeChild(script)

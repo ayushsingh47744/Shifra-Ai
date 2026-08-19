@@ -1,10 +1,10 @@
 import express from "express"
-import { askAssistant, getAssistantConfig } from "../Controllers/assistant.controller.js"
+import { askAgent, getAgentConfig } from "../Controllers/agent.controller.js"
 
 
-const assistantRouter = express.Router()
+const agentRouter = express.Router()
 
-assistantRouter.get("/config/:userId" , getAssistantConfig)
-assistantRouter.post("/ask",askAssistant)
+agentRouter.get("/config/:userId" , getAgentConfig)
+agentRouter.post("/ask",askAgent)
 
-export default assistantRouter
+export default agentRouter
