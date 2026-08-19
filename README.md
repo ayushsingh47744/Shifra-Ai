@@ -14,9 +14,9 @@
 
 ---
 
-<p align="center">
-  🔗 <strong><a href="https://shifra-ai-1-xral.onrender.com/">Live Demo</a></strong>
-</p>
+## 🔗 Live Demo
+
+**Deployment Link:** [https://shifra-ai-1-xral.onrender.com/](https://shifra-ai-1-xral.onrender.com/)
 
 ---
 
