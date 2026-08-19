@@ -14,6 +14,12 @@
 
 ---
 
+<p align="center">
+  🔗 <strong><a href="https://shifra-ai-1-xral.onrender.com/">Live Demo</a></strong>
+</p>
+
+---
+
 ## 🌐 Overview
 
 **Shifra AI** is a full-stack AI agent platform that allows businesses and website owners to create a customized AI agent and embed it directly into their websites.
